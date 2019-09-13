@@ -39,5 +39,12 @@ namespace WebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Articles()
+        {
+            var model = new ArticlesViewModel();
+            model.articles = new ArticleRepository().GetArticles();
+
+            return View(model);
+        }
     }
 }
